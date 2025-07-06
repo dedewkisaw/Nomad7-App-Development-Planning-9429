@@ -17,23 +17,23 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-neu-bg/80 backdrop-blur-md border-b border-neu-dark/20">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-gray-200/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
+          <Link to="/" className="flex items-center space-x-3">
             <motion.div
-              className="neu-card p-2"
-              whileHover={{ scale: 1.05 }}
+              className="w-12 h-12 neu-card flex items-center justify-center bg-gradient-to-br from-blue-400 to-purple-600"
+              whileHover={{ scale: 1.05, rotate: 5 }}
               whileTap={{ scale: 0.95 }}
             >
-              <SafeIcon icon={FiGlobe} className="w-6 h-6 text-nomad-blue" />
+              <SafeIcon icon={FiGlobe} className="w-6 h-6 text-white" />
             </motion.div>
-            <span className="text-xl font-bold gradient-text">Nomad7</span>
+            <span className="text-2xl font-bold gradient-text">Nomad7</span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-1">
+          <div className="hidden md:flex items-center space-x-2">
             {navItems.map((item) => (
               <Link
                 key={item.id}
@@ -41,16 +41,16 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
                 onClick={() => setCurrentPage(item.id)}
               >
                 <motion.div
-                  className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all ${
+                  className={`flex items-center space-x-2 px-6 py-3 rounded-xl transition-all duration-300 ${
                     currentPage === item.id
-                      ? 'neu-card-pressed text-nomad-blue'
-                      : 'neu-button text-gray-600 hover:text-nomad-blue'
+                      ? 'neu-card-pressed text-blue-600 bg-gradient-to-r from-blue-50 to-purple-50'
+                      : 'neu-button text-gray-600 hover:text-blue-600'
                   }`}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <SafeIcon icon={item.icon} className="w-4 h-4" />
-                  <span className="text-sm font-medium">{item.label}</span>
+                  <SafeIcon icon={item.icon} className="w-5 h-5" />
+                  <span className="font-medium">{item.label}</span>
                 </motion.div>
               </Link>
             ))}
@@ -58,12 +58,12 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
 
           {/* Mobile menu button */}
           <motion.button
-            className="md:hidden neu-button p-2"
+            className="md:hidden neu-button p-3"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <SafeIcon icon={isMenuOpen ? FiX : FiMenu} className="w-5 h-5" />
+            <SafeIcon icon={isMenuOpen ? FiX : FiMenu} className="w-6 h-6" />
           </motion.button>
         </div>
 
@@ -73,9 +73,9 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="md:hidden py-4"
+            className="md:hidden py-6"
           >
-            <div className="space-y-2">
+            <div className="space-y-3">
               {navItems.map((item) => (
                 <Link
                   key={item.id}
@@ -86,9 +86,9 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
                   }}
                 >
                   <motion.div
-                    className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all ${
+                    className={`flex items-center space-x-3 px-6 py-4 rounded-xl transition-all ${
                       currentPage === item.id
-                        ? 'neu-card-pressed text-nomad-blue'
+                        ? 'neu-card-pressed text-blue-600'
                         : 'neu-button text-gray-600'
                     }`}
                     whileHover={{ scale: 1.02 }}
