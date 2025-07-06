@@ -3,17 +3,23 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import SafeIcon from '../common/SafeIcon';
 import * as FiIcons from 'react-icons/fi';
+import * as HiIcons from 'react-icons/hi';
+import * as MdIcons from 'react-icons/md';
+import * as BsIcons from 'react-icons/bs';
 
-const { FiGlobe, FiUsers, FiMapPin, FiHeadphones, FiMenu, FiX } = FiIcons;
+const { FiGlobe } = FiIcons;
+const { HiHome, HiUserGroup } = HiIcons;
+const { MdWorkspaces, MdSupportAgent } = MdIcons;
+const { BsBuilding } = BsIcons;
 
 const Navbar = ({ currentPage, setCurrentPage }) => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const navItems = [
-    { id: 'home', label: 'Home', icon: FiGlobe, path: '/' },
-    { id: 'coworking', label: 'Co-Working', icon: FiMapPin, path: '/coworking' },
-    { id: 'families', label: 'Families', icon: FiUsers, path: '/families' },
-    { id: 'assistant', label: 'Assistant', icon: FiHeadphones, path: '/assistant' },
+    { id: 'home', label: 'Home', icon: HiHome, path: '/' },
+    { id: 'coworking', label: 'Co-Working', icon: MdWorkspaces, path: '/coworking' },
+    { id: 'families', label: 'Families', icon: HiUserGroup, path: '/families' },
+    { id: 'assistant', label: 'Assistant', icon: MdSupportAgent, path: '/assistant' },
   ];
 
   return (
@@ -78,7 +84,7 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
             transition={{ duration: 0.15, ease: "easeOut" }}
           >
             <div className="w-6 h-6 neu-card-deep flex items-center justify-center rounded bg-gradient-to-br from-gray-100 to-gray-200">
-              <SafeIcon icon={isMenuOpen ? FiX : FiMenu} className="w-4 h-4 text-gray-600" />
+              <SafeIcon icon={isMenuOpen ? FiIcons.FiX : FiIcons.FiMenu} className="w-4 h-4 text-gray-600" />
             </div>
           </motion.button>
         </div>
