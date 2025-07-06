@@ -24,8 +24,9 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
           <Link to="/" className="flex items-center space-x-3">
             <motion.div
               className="w-12 h-12 neu-card-deep flex items-center justify-center bg-gradient-to-br from-blue-400 to-purple-600"
-              whileHover={{ scale: 1.05, rotate: 5 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.02, rotate: 2 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
             >
               <SafeIcon icon={FiGlobe} className="w-6 h-6 text-white" />
             </motion.div>
@@ -46,10 +47,22 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
                       ? 'neu-card-pressed text-blue-600 bg-gradient-to-r from-blue-50 to-purple-50'
                       : 'neu-button text-ingrained hover:text-blue-600'
                   }`}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                  whileHover={{ scale: 1.01 }}
+                  whileTap={{ scale: 0.99 }}
+                  transition={{ duration: 0.15, ease: "easeOut" }}
                 >
-                  <SafeIcon icon={item.icon} className="w-5 h-5" />
+                  <div className={`w-8 h-8 flex items-center justify-center rounded-lg transition-all duration-300 ${
+                    currentPage === item.id
+                      ? 'bg-gradient-to-br from-blue-400 to-purple-600'
+                      : 'neu-card-deep bg-gradient-to-br from-gray-100 to-gray-200'
+                  }`}>
+                    <SafeIcon 
+                      icon={item.icon} 
+                      className={`w-4 h-4 transition-colors duration-300 ${
+                        currentPage === item.id ? 'text-white' : 'text-gray-600'
+                      }`} 
+                    />
+                  </div>
                   <span className="font-medium carved-text">{item.label}</span>
                 </motion.div>
               </Link>
@@ -60,19 +73,23 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
           <motion.button
             className="md:hidden neu-button p-3"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ duration: 0.15, ease: "easeOut" }}
           >
-            <SafeIcon icon={isMenuOpen ? FiX : FiMenu} className="w-6 h-6" />
+            <div className="w-6 h-6 neu-card-deep flex items-center justify-center rounded bg-gradient-to-br from-gray-100 to-gray-200">
+              <SafeIcon icon={isMenuOpen ? FiX : FiMenu} className="w-4 h-4 text-gray-600" />
+            </div>
           </motion.button>
         </div>
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
             className="md:hidden py-6"
           >
             <div className="space-y-3">
@@ -91,10 +108,22 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
                         ? 'neu-card-pressed text-blue-600'
                         : 'neu-button text-ingrained'
                     }`}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
+                    whileHover={{ scale: 1.01 }}
+                    whileTap={{ scale: 0.99 }}
+                    transition={{ duration: 0.15, ease: "easeOut" }}
                   >
-                    <SafeIcon icon={item.icon} className="w-5 h-5" />
+                    <div className={`w-8 h-8 flex items-center justify-center rounded-lg transition-all duration-300 ${
+                      currentPage === item.id
+                        ? 'bg-gradient-to-br from-blue-400 to-purple-600'
+                        : 'neu-card-deep bg-gradient-to-br from-gray-100 to-gray-200'
+                    }`}>
+                      <SafeIcon 
+                        icon={item.icon} 
+                        className={`w-4 h-4 transition-colors duration-300 ${
+                          currentPage === item.id ? 'text-white' : 'text-gray-600'
+                        }`} 
+                      />
+                    </div>
                     <span className="font-medium carved-text">{item.label}</span>
                   </motion.div>
                 </Link>
