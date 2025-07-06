@@ -23,7 +23,7 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
             <motion.div
-              className="w-12 h-12 neu-card flex items-center justify-center bg-gradient-to-br from-blue-400 to-purple-600"
+              className="w-12 h-12 neu-card-deep flex items-center justify-center bg-gradient-to-br from-blue-400 to-purple-600"
               whileHover={{ scale: 1.05, rotate: 5 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -44,13 +44,13 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
                   className={`flex items-center space-x-2 px-6 py-3 rounded-xl transition-all duration-300 ${
                     currentPage === item.id
                       ? 'neu-card-pressed text-blue-600 bg-gradient-to-r from-blue-50 to-purple-50'
-                      : 'neu-button text-gray-600 hover:text-blue-600'
+                      : 'neu-button text-ingrained hover:text-blue-600'
                   }`}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
                   <SafeIcon icon={item.icon} className="w-5 h-5" />
-                  <span className="font-medium">{item.label}</span>
+                  <span className="font-medium carved-text">{item.label}</span>
                 </motion.div>
               </Link>
             ))}
@@ -89,13 +89,13 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
                     className={`flex items-center space-x-3 px-6 py-4 rounded-xl transition-all ${
                       currentPage === item.id
                         ? 'neu-card-pressed text-blue-600'
-                        : 'neu-button text-gray-600'
+                        : 'neu-button text-ingrained'
                     }`}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
                     <SafeIcon icon={item.icon} className="w-5 h-5" />
-                    <span className="font-medium">{item.label}</span>
+                    <span className="font-medium carved-text">{item.label}</span>
                   </motion.div>
                 </Link>
               ))}

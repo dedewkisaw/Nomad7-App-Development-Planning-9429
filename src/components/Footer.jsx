@@ -65,14 +65,13 @@ const Footer = () => {
               className="mb-6"
             >
               <div className="flex items-center space-x-2 mb-4">
-                <div className="neu-card p-2">
+                <div className="neu-card-deep p-2">
                   <SafeIcon icon={FiGlobe} className="w-6 h-6 text-nomad-blue" />
                 </div>
                 <span className="text-2xl font-bold gradient-text">Nomad7</span>
               </div>
-              <p className="text-gray-600 mb-6">
-                Connecting nomad families and auto-managing co-working spaces across 70+ countries 
-                with intelligent cross-border remote work assistance.
+              <p className="carved-text mb-6">
+                Connecting nomad families and auto-managing co-working spaces across 70+ countries with intelligent cross-border remote work assistance.
               </p>
             </motion.div>
 
@@ -83,15 +82,15 @@ const Footer = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="space-y-3"
             >
-              <div className="flex items-center space-x-3 text-gray-600">
+              <div className="flex items-center space-x-3 carved-text">
                 <SafeIcon icon={FiMail} className="w-4 h-4" />
                 <span className="text-sm">hello@nomad7.com</span>
               </div>
-              <div className="flex items-center space-x-3 text-gray-600">
+              <div className="flex items-center space-x-3 carved-text">
                 <SafeIcon icon={FiPhone} className="w-4 h-4" />
                 <span className="text-sm">+1 (555) 123-4567</span>
               </div>
-              <div className="flex items-center space-x-3 text-gray-600">
+              <div className="flex items-center space-x-3 carved-text">
                 <SafeIcon icon={FiMapPin} className="w-4 h-4" />
                 <span className="text-sm">Global Remote Team</span>
               </div>
@@ -106,13 +105,13 @@ const Footer = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 * (index + 1) }}
             >
-              <h3 className="text-lg font-semibold text-gray-800 mb-4">{section.title}</h3>
+              <h3 className="text-lg font-semibold carved-text-deep mb-4">{section.title}</h3>
               <ul className="space-y-2">
                 {section.links.map((link) => (
                   <li key={link.name}>
                     <a
                       href={link.href}
-                      className="text-gray-600 hover:text-nomad-blue transition-colors duration-200 text-sm"
+                      className="carved-text-light hover:text-nomad-blue transition-colors duration-200 text-sm"
                     >
                       {link.name}
                     </a>
@@ -130,7 +129,7 @@ const Footer = () => {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="text-gray-600 text-sm mb-4 md:mb-0"
+              className="carved-text text-sm mb-4 md:mb-0"
             >
               © 2024 Nomad7. All rights reserved. Built with ❤️ for digital nomads worldwide.
             </motion.div>
@@ -146,7 +145,7 @@ const Footer = () => {
                 <motion.a
                   key={social.label}
                   href={social.href}
-                  className="neu-button p-2 text-gray-600 hover:text-nomad-blue transition-colors duration-200"
+                  className="neu-button p-2 carved-text hover:text-nomad-blue transition-colors duration-200"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   aria-label={social.label}

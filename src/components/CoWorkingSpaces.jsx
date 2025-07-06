@@ -121,7 +121,7 @@ const CoWorkingSpaces = () => {
           className="text-center mb-16"
         >
           <h1 className="text-5xl md:text-6xl font-bold gradient-text mb-6">Co-Working Spaces</h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-ingrained-light max-w-3xl mx-auto leading-relaxed">
             Discover and book premium co-working spaces in 70+ countries worldwide
           </p>
         </motion.div>
@@ -131,37 +131,37 @@ const CoWorkingSpaces = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="neu-card p-8 mb-12"
+          className="neu-card-deep p-6 mb-12"
         >
-          <div className="flex flex-col lg:flex-row gap-6">
+          <div className="flex flex-col lg:flex-row gap-4">
             {/* Search */}
             <div className="flex-1 relative">
-              <SafeIcon icon={FiSearch} className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-6 h-6" />
+              <SafeIcon icon={FiSearch} className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 icon-ingrained" />
               <input
                 type="text"
                 placeholder="Search spaces or locations..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="neu-input w-full pl-12 pr-6 py-4 text-lg text-gray-700 placeholder-gray-400 font-medium"
+                className="neu-input w-full pl-12 pr-6 py-3 text-ingrained font-medium"
               />
             </div>
 
             {/* Filters */}
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-2">
               {filters.map(filter => (
                 <motion.button
                   key={filter.id}
-                  className={`px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300 ${
+                  className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 ${
                     selectedFilter === filter.id
                       ? 'neu-card-pressed text-blue-600 bg-gradient-to-r from-blue-50 to-purple-50'
-                      : 'neu-button text-gray-600 hover:text-blue-600'
+                      : 'neu-button text-ingrained hover:text-blue-600'
                   }`}
                   onClick={() => setSelectedFilter(filter.id)}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
                   {filter.label}
-                  <span className="ml-2 px-2 py-1 bg-gray-200 rounded-full text-xs">
+                  <span className="ml-2 px-2 py-1 bg-gray-200 rounded-full text-xs text-ingrained-dark">
                     {filter.count}
                   </span>
                 </motion.button>
@@ -171,16 +171,16 @@ const CoWorkingSpaces = () => {
         </motion.div>
 
         {/* Spaces Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredSpaces.map((space, index) => (
             <motion.div
               key={space.id}
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="neu-card overflow-hidden hover:shadow-neu-hover transition-all duration-300 group"
+              className="neu-card-deep overflow-hidden hover:shadow-neu-hover transition-all duration-300 group"
             >
-              <div className="relative h-56 overflow-hidden">
+              <div className="relative h-48 overflow-hidden">
                 <img
                   src={space.image}
                   alt={space.name}
@@ -189,9 +189,9 @@ const CoWorkingSpaces = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                 
                 {/* Status and Actions */}
-                <div className="absolute top-4 left-4 right-4 flex justify-between items-start">
-                  <div className="flex flex-col gap-2">
-                    <div className={`px-3 py-1 rounded-full text-xs font-semibold status-indicator ${
+                <div className="absolute top-3 left-3 right-3 flex justify-between items-start">
+                  <div className="flex flex-col gap-1">
+                    <div className={`px-2 py-1 rounded-lg text-xs font-semibold status-indicator ${
                       space.available 
                         ? 'bg-emerald-500 text-white' 
                         : 'bg-red-500 text-white'
@@ -199,89 +199,89 @@ const CoWorkingSpaces = () => {
                       {space.available ? 'Available' : 'Full'}
                     </div>
                     {space.featured && (
-                      <div className="px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-orange-400 to-pink-400 text-white">
+                      <div className="px-2 py-1 rounded-lg text-xs font-semibold bg-gradient-to-r from-orange-400 to-pink-400 text-white">
                         Featured
                       </div>
                     )}
                   </div>
-                  <div className="flex gap-2">
+                  <div className="flex gap-1">
                     <motion.button
-                      className="w-10 h-10 rounded-full glass-card flex items-center justify-center text-white hover:bg-white hover:text-gray-700 transition-all"
+                      className="w-8 h-8 rounded-lg glass-card flex items-center justify-center text-white hover:bg-white hover:text-gray-700 transition-all"
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
                     >
-                      <SafeIcon icon={FiBookmark} className="w-5 h-5" />
+                      <SafeIcon icon={FiBookmark} className="w-4 h-4" />
                     </motion.button>
                     <motion.button
-                      className="w-10 h-10 rounded-full glass-card flex items-center justify-center text-white hover:bg-white hover:text-red-500 transition-all"
+                      className="w-8 h-8 rounded-lg glass-card flex items-center justify-center text-white hover:bg-white hover:text-red-500 transition-all"
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
                     >
-                      <SafeIcon icon={FiHeart} className="w-5 h-5" />
+                      <SafeIcon icon={FiHeart} className="w-4 h-4" />
                     </motion.button>
                   </div>
                 </div>
 
                 {/* Rating */}
-                <div className="absolute bottom-4 left-4">
-                  <div className="flex items-center glass-card px-3 py-1 rounded-full">
-                    <SafeIcon icon={FiStar} className="w-4 h-4 text-yellow-400 mr-1" />
-                    <span className="text-sm font-semibold text-white">{space.rating}</span>
+                <div className="absolute bottom-3 left-3">
+                  <div className="flex items-center glass-card px-2 py-1 rounded-lg">
+                    <SafeIcon icon={FiStar} className="w-3 h-3 text-yellow-400 mr-1" />
+                    <span className="text-xs font-semibold text-white">{space.rating}</span>
                   </div>
                 </div>
               </div>
 
-              <div className="p-6">
-                <div className="flex items-start justify-between mb-4">
+              <div className="p-4">
+                <div className="flex items-start justify-between mb-3">
                   <div>
-                    <h3 className="text-xl font-bold text-gray-800 mb-2">{space.name}</h3>
-                    <div className="flex items-center text-gray-600">
-                      <SafeIcon icon={FiMapPin} className="w-4 h-4 mr-1" />
-                      <span className="text-sm">{space.location}</span>
+                    <h3 className="text-lg font-bold text-ingrained-dark mb-1">{space.name}</h3>
+                    <div className="flex items-center text-ingrained-light">
+                      <SafeIcon icon={FiMapPin} className="w-3 h-3 mr-1" />
+                      <span className="text-xs">{space.location}</span>
                     </div>
                   </div>
                   <div className="text-right">
-                    <div className="flex items-center gap-2 mb-1">
-                      <div className="text-2xl font-bold text-blue-600">{space.price}</div>
+                    <div className="flex items-center gap-1 mb-1">
+                      <div className="text-lg font-bold text-blue-600">{space.price}</div>
                       {space.originalPrice && (
-                        <div className="text-sm text-gray-400 line-through">{space.originalPrice}</div>
+                        <div className="text-xs text-gray-400 line-through">{space.originalPrice}</div>
                       )}
                     </div>
-                    <div className="text-xs text-gray-500">per day</div>
+                    <div className="text-xs text-ingrained-light">per day</div>
                   </div>
                 </div>
 
-                <div className="flex items-center text-gray-600 mb-4">
-                  <SafeIcon icon={FiUsers} className="w-4 h-4 mr-1" />
-                  <span className="text-sm">Capacity: {space.capacity}</span>
+                <div className="flex items-center text-ingrained-light mb-3">
+                  <SafeIcon icon={FiUsers} className="w-3 h-3 mr-1" />
+                  <span className="text-xs">Capacity: {space.capacity}</span>
                 </div>
 
-                <div className="flex flex-wrap gap-2 mb-6">
+                <div className="flex flex-wrap gap-1 mb-4">
                   {space.amenities.slice(0, 3).map((amenity, idx) => (
                     <span
                       key={idx}
-                      className="px-3 py-1 bg-gradient-to-r from-blue-50 to-purple-50 text-blue-600 text-xs rounded-full font-medium"
+                      className="px-2 py-1 bg-gradient-to-r from-blue-50 to-purple-50 text-blue-600 text-xs rounded-lg font-medium"
                     >
                       {amenity}
                     </span>
                   ))}
                   {space.amenities.length > 3 && (
-                    <span className="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded-full font-medium">
+                    <span className="px-2 py-1 bg-gray-100 text-ingrained-dark text-xs rounded-lg font-medium">
                       +{space.amenities.length - 3} more
                     </span>
                   )}
                 </div>
 
-                <div className="flex gap-3">
+                <div className="flex gap-2">
                   <motion.button
-                    className="flex-1 neu-button py-3 px-4 text-sm font-semibold text-gray-700 hover:text-blue-600 transition-colors"
+                    className="flex-1 neu-button py-2 px-3 text-xs font-semibold text-ingrained hover:text-blue-600 transition-colors"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
                     View Details
                   </motion.button>
                   <motion.button
-                    className="flex-1 py-3 px-4 text-sm font-semibold text-white bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl hover:shadow-lg transition-all"
+                    className="flex-1 neu-button-primary py-2 px-3 text-xs font-semibold transition-all"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     disabled={!space.available}
@@ -300,11 +300,11 @@ const CoWorkingSpaces = () => {
             animate={{ opacity: 1 }}
             className="text-center py-16"
           >
-            <div className="w-24 h-24 neu-card flex items-center justify-center mx-auto mb-6">
-              <SafeIcon icon={FiMapPin} className="w-12 h-12 text-gray-400" />
+            <div className="w-20 h-20 neu-card-deep flex items-center justify-center mx-auto mb-4">
+              <SafeIcon icon={FiMapPin} className="w-10 h-10 text-gray-400 icon-ingrained" />
             </div>
-            <h3 className="text-xl font-semibold text-gray-800 mb-2">No spaces found</h3>
-            <p className="text-gray-600">Try adjusting your search criteria</p>
+            <h3 className="text-lg font-semibold text-ingrained-dark mb-2">No spaces found</h3>
+            <p className="text-ingrained-light">Try adjusting your search criteria</p>
           </motion.div>
         )}
       </div>

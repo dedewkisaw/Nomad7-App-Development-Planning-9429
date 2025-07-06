@@ -12,28 +12,28 @@ const Hero = () => {
       title: "70+ Countries",
       description: "Premium co-working spaces worldwide",
       color: "text-blue-500",
-      gradient: "from-blue-400 to-blue-600"
+      bgGradient: "from-blue-400 to-blue-600"
     },
     {
       icon: FiUsers,
       title: "Nomad Families",
       description: "Connect with like-minded travelers",
       color: "text-purple-500",
-      gradient: "from-purple-400 to-purple-600"
+      bgGradient: "from-purple-400 to-purple-600"
     },
     {
       icon: FiShield,
       title: "Legal Assistant",
       description: "Navigate cross-border work laws",
       color: "text-green-500",
-      gradient: "from-green-400 to-green-600"
+      bgGradient: "from-green-400 to-green-600"
     },
     {
       icon: FiWifi,
       title: "Remote Work",
       description: "Seamless digital nomad experience",
       color: "text-orange-500",
-      gradient: "from-orange-400 to-orange-600"
+      bgGradient: "from-orange-400 to-orange-600"
     }
   ];
 
@@ -67,13 +67,13 @@ const Hero = () => {
               transition={{ delay: 0.2, duration: 0.6 }}
             >
               <SafeIcon icon={FiStar} className="w-5 h-5 text-yellow-500 mr-2" />
-              <span className="text-sm font-medium text-gray-700">Trusted by 15,000+ Digital Nomads</span>
+              <span className="text-sm font-medium carved-text-light">Trusted by 15,000+ Digital Nomads</span>
             </motion.div>
 
             <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight">
-              <span className="gradient-text text-shadow">Welcome to Nomad7</span>
+              <span className="gradient-text">Welcome to Nomad7</span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-light">
+            <p className="text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed font-light carved-text-light">
               Connect nomad families, auto-manage co-working spaces across 70+ countries, 
               and navigate cross-border remote work with our intelligent assistant.
             </p>
@@ -86,17 +86,17 @@ const Hero = () => {
             className="flex flex-col sm:flex-row gap-6 justify-center mb-20"
           >
             <motion.button
-              className="group relative px-10 py-4 text-lg font-semibold text-white premium-gradient rounded-xl overflow-hidden"
+              className="group relative px-10 py-4 text-lg font-semibold neu-button-primary overflow-hidden"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <span className="relative z-10 flex items-center">
+              <span className="relative z-10 flex items-center text-white">
                 Start Your Journey
                 <SafeIcon icon={FiArrowRight} className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </span>
             </motion.button>
             <motion.button
-              className="px-10 py-4 text-lg font-semibold text-gray-700 neu-button"
+              className="px-10 py-4 text-lg font-semibold neu-button carved-text"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -105,7 +105,7 @@ const Hero = () => {
           </motion.div>
         </div>
 
-        {/* Features Grid */}
+        {/* Features Grid - Matching Dashboard Style */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
           {features.map((feature, index) => (
             <motion.div
@@ -113,19 +113,15 @@ const Hero = () => {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
-              className="neu-card p-8 text-center hover:shadow-neu-hover transition-all duration-300 group"
+              className="neu-card-deep p-6 hover:shadow-neu-hover transition-all duration-300 group"
             >
-              <motion.div
-                className="relative mb-6"
-                whileHover={{ scale: 1.1 }}
-                transition={{ duration: 0.3 }}
-              >
-                <div className={`w-20 h-20 mx-auto neu-card flex items-center justify-center bg-gradient-to-br ${feature.gradient} floating-element`}>
-                  <SafeIcon icon={feature.icon} className="w-10 h-10 text-white icon-glow" />
+              <div className="flex items-center justify-between mb-4">
+                <div className={`w-14 h-14 neu-card-deep flex items-center justify-center bg-gradient-to-br ${feature.bgGradient} group-hover:scale-110 transition-transform`}>
+                  <SafeIcon icon={feature.icon} className="w-7 h-7 text-white" />
                 </div>
-              </motion.div>
-              <h3 className="text-2xl font-bold mb-3 text-gray-800">{feature.title}</h3>
-              <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+              </div>
+              <div className="text-2xl font-bold carved-text-deep mb-1">{feature.title}</div>
+              <div className="carved-text-light font-medium text-sm">{feature.description}</div>
             </motion.div>
           ))}
         </div>
@@ -135,7 +131,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1 }}
-          className="neu-card p-10 bg-gradient-to-br from-white/50 to-white/30"
+          className="neu-card-deep p-10 bg-gradient-to-br from-white/50 to-white/30"
         >
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             {stats.map((stat, index) => (
@@ -146,11 +142,11 @@ const Hero = () => {
                 transition={{ duration: 0.6, delay: 1.2 + index * 0.1 }}
                 className="group"
               >
-                <div className="neu-card p-6 mb-4 w-fit mx-auto">
-                  <SafeIcon icon={stat.icon} className="w-8 h-8 text-blue-500 group-hover:text-purple-500 transition-colors" />
+                <div className="neu-card-deep p-6 mb-4 w-fit mx-auto">
+                  <SafeIcon icon={stat.icon} className="w-8 h-8 text-blue-500 group-hover:text-purple-500 transition-colors icon-ingrained" />
                 </div>
-                <div className="text-4xl md:text-5xl font-bold gradient-text mb-2">{stat.value}</div>
-                <div className="text-gray-600 text-lg">{stat.label}</div>
+                <div className="text-3xl md:text-4xl font-bold gradient-text mb-2">{stat.value}</div>
+                <div className="carved-text font-medium">{stat.label}</div>
               </motion.div>
             ))}
           </div>
