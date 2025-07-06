@@ -1,56 +1,82 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link, useNavigate } from 'react-router-dom';
 import SafeIcon from '../common/SafeIcon';
 import * as FiIcons from 'react-icons/fi';
 
 const { FiGlobe, FiMail, FiPhone, FiMapPin, FiTwitter, FiInstagram, FiLinkedin, FiGithub } = FiIcons;
 
 const Footer = () => {
+  const navigate = useNavigate();
+
   const footerSections = [
     {
       title: "Platform",
       links: [
-        { name: "Co-working Spaces", href: "#" },
-        { name: "Nomad Families", href: "#" },
-        { name: "Remote Assistant", href: "#" },
-        { name: "Global Map", href: "#" }
+        { name: "Co-working Spaces", href: "/coworking", type: "route" },
+        { name: "Nomad Families", href: "/families", type: "route" },
+        { name: "Remote Assistant", href: "/assistant", type: "route" },
+        { name: "Global Map", href: "/", type: "route" }
       ]
     },
     {
       title: "Services",
       links: [
-        { name: "Tax Compliance", href: "#" },
-        { name: "Visa Requirements", href: "#" },
-        { name: "Legal Documentation", href: "#" },
-        { name: "Banking Solutions", href: "#" }
+        { name: "Tax Compliance", href: "/tax-compliance", type: "route" },
+        { name: "Visa Requirements", href: "/visa-requirements", type: "route" },
+        { name: "Legal Documentation", href: "/legal-docs", type: "route" },
+        { name: "Banking Solutions", href: "/contact", type: "route" }
       ]
     },
     {
       title: "Community",
       links: [
-        { name: "Success Stories", href: "#" },
-        { name: "Blog", href: "#" },
-        { name: "Events", href: "#" },
-        { name: "Newsletter", href: "#" }
+        { name: "Success Stories", href: "/success-stories", type: "route" },
+        { name: "Blog", href: "/blog", type: "route" },
+        { name: "Events", href: "/contact", type: "route" },
+        { name: "Newsletter", href: "/contact", type: "route" }
       ]
     },
     {
       title: "Support",
       links: [
-        { name: "Help Center", href: "#" },
-        { name: "Contact Us", href: "#" },
-        { name: "Privacy Policy", href: "#" },
-        { name: "Terms of Service", href: "#" }
+        { name: "Help Center", href: "/help", type: "route" },
+        { name: "Contact Us", href: "/contact", type: "route" },
+        { name: "Privacy Policy", href: "/privacy", type: "route" },
+        { name: "Terms of Service", href: "/terms", type: "route" }
       ]
     }
   ];
 
   const socialLinks = [
-    { icon: FiTwitter, href: "#", label: "Twitter" },
-    { icon: FiInstagram, href: "#", label: "Instagram" },
-    { icon: FiLinkedin, href: "#", label: "LinkedIn" },
-    { icon: FiGithub, href: "#", label: "GitHub" }
+    { icon: FiTwitter, href: "https://twitter.com/nomad7", label: "Twitter" },
+    { icon: FiInstagram, href: "https://instagram.com/nomad7", label: "Instagram" },
+    { icon: FiLinkedin, href: "https://linkedin.com/company/nomad7", label: "LinkedIn" },
+    { icon: FiGithub, href: "https://github.com/nomad7", label: "GitHub" }
   ];
+
+  const handleNavigation = (href) => {
+    navigate(href);
+    // Smooth scroll to top after navigation
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      });
+    }, 100);
+  };
+
+  const renderLink = (link) => {
+    return (
+      <button
+        onClick={() => handleNavigation(link.href)}
+        className="carved-text-light hover:text-nomad-blue transition-colors duration-200 text-sm text-left"
+      >
+        {link.name}
+      </button>
+    );
+  };
 
   return (
     <footer className="bg-neu-bg border-t border-neu-dark/20">
@@ -64,12 +90,15 @@ const Footer = () => {
               transition={{ duration: 0.6 }}
               className="mb-6"
             >
-              <div className="flex items-center space-x-2 mb-4">
-                <div className="neu-card-deep p-2">
-                  <SafeIcon icon={FiGlobe} className="w-6 h-6 text-nomad-blue" />
+              <button
+                onClick={() => handleNavigation('/')}
+                className="flex items-center space-x-2 mb-4"
+              >
+                <div className="w-10 h-10 neu-card-deep flex items-center justify-center bg-gradient-to-br from-blue-400 to-purple-600">
+                  <SafeIcon icon={FiGlobe} className="w-5 h-5 text-white" />
                 </div>
                 <span className="text-2xl font-bold gradient-text">Nomad7</span>
-              </div>
+              </button>
               <p className="carved-text mb-6">
                 Connecting nomad families and auto-managing co-working spaces across 70+ countries with intelligent cross-border remote work assistance.
               </p>
@@ -109,12 +138,7 @@ const Footer = () => {
               <ul className="space-y-2">
                 {section.links.map((link) => (
                   <li key={link.name}>
-                    <a
-                      href={link.href}
-                      className="carved-text-light hover:text-nomad-blue transition-colors duration-200 text-sm"
-                    >
-                      {link.name}
-                    </a>
+                    {renderLink(link)}
                   </li>
                 ))}
               </ul>
@@ -145,6 +169,8 @@ const Footer = () => {
                 <motion.a
                   key={social.label}
                   href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="neu-button p-2 carved-text hover:text-nomad-blue transition-colors duration-200"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
